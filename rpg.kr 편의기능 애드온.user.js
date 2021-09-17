@@ -84,11 +84,22 @@
           });
           break;
         case 'Backspace':
-          clickElement("돌아가기");
+          if(!doc.activeElement)
+            clickElement("돌아가기");
           break;
       }
     }
 
+    //엔터키 눌렀을 때 form의 submit(전투 실행)을 방지합니다.
+    const onKeyDown = (event) => {
+      switch(event.key) {
+        case 'Enter':
+          event.preventDefault();
+          break;
+      }
+    };
+
     doc.addEventListener('keyup', onKeyUp);
+    doc.addEventListener('keydown', onKeyDown);
   }
 })();
