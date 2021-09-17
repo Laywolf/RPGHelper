@@ -90,7 +90,7 @@
     const onKeyUp = (event) => {
       //input창에서 값을 입력중일 때는 기능 실행하지 않음.
       const activeElement = doc.activeElement.tagName.toLowerCase();
-      if(activeElement == "input" || event.key != 'Enter') return;
+      if(activeElement == "input" && event.key != 'Enter') return;
 
       switch(event.key) {
         case 'Enter':
