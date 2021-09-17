@@ -4,7 +4,7 @@
 // @description 게임 플레이에 필요한 편의기능을 구현한 스크립트입니다.
 // @match https://rpg.kr/
 // @grant none
-// @version 0.0.4
+// @version 0.0.5
 // ==/UserScript==
 /*jshint esversion: 6 */
 
@@ -64,6 +64,7 @@
         (code) => `//a[text() = '${code}']`,
         (code) => `//input[@value = '${code}']`,
         (code) => `//div[text() = '${code}' and @class='button']`,
+        (code) => `//font[text() = '${code}']`,
       ];
       xpaths.some(xpath => {
         var element = doc.evaluate(xpath(text), doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -86,6 +87,12 @@
         case 'Backspace':
           if(!doc.activeElement)
             clickElement("돌아가기");
+          break;
+        case 'ArrowLeft':
+          clickElement("◁");
+          break;
+        case 'ArrowRight':
+          clickElement("▷");
           break;
         case '`':
           clickElement("개요");
