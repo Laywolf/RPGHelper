@@ -4,7 +4,7 @@
 // @description 게임 플레이에 필요한 편의기능을 구현한 스크립트입니다.
 // @match https://rpg.kr/
 // @grant none
-// @version 0.0.5.1
+// @version 0.0.5.2
 // ==/UserScript==
 /*jshint esversion: 6 */
 
@@ -56,6 +56,10 @@
         });
         alimiChanged();
       }
+
+      //엔터키 눌렀을 때 form의 submit(전투 실행)을 방지합니다.
+      const form = doc.forms.rform;
+      form.onkeydown = undefined;
     };
 
     //키보드 입력에 따른 기능을 처리합니다.
@@ -143,16 +147,6 @@
       }
     }
 
-    //엔터키 눌렀을 때 form의 submit(전투 실행)을 방지합니다.
-    const onKeyDown = (event) => {
-      switch(event.key) {
-        case 'Enter':
-          event.preventDefault();
-          break;
-      }
-    };
-
     doc.addEventListener('keyup', onKeyUp);
-    doc.addEventListener('keydown', onKeyDown);
   }
 })();
