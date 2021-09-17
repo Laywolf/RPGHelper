@@ -4,7 +4,7 @@
 // @description 게임 플레이에 필요한 편의기능을 구현한 스크립트입니다.
 // @match https://rpg.kr/
 // @grant none
-// @version 0.0.3
+// @version 0.0.3.1
 // ==/UserScript==
 /*jshint esversion: 6 */
 
