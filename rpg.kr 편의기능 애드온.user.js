@@ -87,6 +87,48 @@
           if(!doc.activeElement)
             clickElement("돌아가기");
           break;
+        case '`':
+          clickElement("개요");
+          break;
+        case '1':
+          clickElement("상세");
+          break;
+        case '2':
+          clickElement("훈련");
+          break;
+        case '3':
+          clickElement("능력");
+          break;
+        case '4':
+          clickElement("가방");
+          break;
+        case '5':
+          clickElement("장비");
+          break;
+        case '6':
+          clickElement("전투");
+          break;
+        case '7':
+          clickElement("협동");
+          break;
+        case '8':
+          clickElement("결투");
+          break;
+        case '9':
+          clickElement("제전");
+          break;
+        case '0':
+          clickElement("세력");
+          break;
+        case '-':
+          clickElement("마을");
+          break;
+        case '=':
+          clickElement("도감");
+          break;
+        case '\\':
+          clickElement("업적");
+          break;
       }
     }
 
