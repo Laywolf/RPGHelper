@@ -59,7 +59,7 @@
 
       //엔터키 눌렀을 때 form의 submit(전투 실행)을 방지합니다.
       const form = doc.forms.rform;
-      form?.onkeydown = undefined;
+      if(form) form.onkeydown = undefined;
     };
 
     //키보드 입력에 따른 기능을 처리합니다.
