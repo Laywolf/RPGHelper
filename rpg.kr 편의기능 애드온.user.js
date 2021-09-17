@@ -4,7 +4,7 @@
 // @description 게임 플레이에 필요한 편의기능을 구현한 스크립트입니다.
 // @match https://rpg.kr/
 // @grant none
-// @version 0.0.5.3
+// @version 0.1.0
 // ==/UserScript==
 /*jshint esversion: 6 */
 
@@ -88,7 +88,7 @@
 
       switch(event.key) {
         case 'Enter':
-          var buttons = ["전투", "탐사"];
+          var buttons = ["전투", "탐사", "로그인"];
           buttons.some(button => {
             if(clickElement(button)) return;
           });
