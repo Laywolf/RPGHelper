@@ -4,7 +4,7 @@
 // @description 게임 플레이에 필요한 편의기능을 구현한 스크립트입니다.
 // @match https://rpg.kr/
 // @grant none
-// @version 0.1.1
+// @version 0.1.0
 // ==/UserScript==
 /*jshint esversion: 6 */
 
@@ -62,12 +62,7 @@
       if(form) form.onkeydown = (event) => {
         switch(event.key) {
           case 'Enter':
-            if (window.event) {
-              event.returnValue = false;
-            }
-            else {
-              event.preventDefault();
-            }
+            event.preventDefault();
             break;
         }
       };
@@ -95,7 +90,7 @@
     const onKeyUp = (event) => {
       //input창에서 값을 입력중일 때는 기능 실행하지 않음.
       const activeElement = doc.activeElement.tagName.toLowerCase();
-      if(activeElement == "input") return;
+      if(activeElement == "input" || event.key != 'Enter') return;
 
       switch(event.key) {
         case 'Enter':
