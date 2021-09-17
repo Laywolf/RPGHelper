@@ -4,7 +4,7 @@
 // @description 게임 플레이에 필요한 편의기능을 구현한 스크립트입니다.
 // @match https://rpg.kr/
 // @grant none
-// @version 0.0.5
+// @version 0.0.5.1
 // ==/UserScript==
 /*jshint esversion: 6 */
 
@@ -59,13 +59,14 @@
     };
 
     //키보드 입력에 따른 기능을 처리합니다.
-    const clickElement = (text) => {
-      const xpaths = [
+    const clickElement = (text, isSpecial) => {
+      const xpaths = isSpecial ? [(code) => `//font[text() = '${code}']`,] :
+      [
         (code) => `//a[text() = '${code}']`,
         (code) => `//input[@value = '${code}']`,
         (code) => `//div[text() = '${code}' and @class='button']`,
-        (code) => `//font[text() = '${code}']`,
       ];
+
       xpaths.some(xpath => {
         var element = doc.evaluate(xpath(text), doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         if(element) {
@@ -77,6 +78,10 @@
     }
 
     const onKeyUp = (event) => {
+      //input창에서 값을 입력중일 때는 기능 실행하지 않음.
+      const activeElement = doc.activeElement.tagName.toLowerCase();
+      if(activeElement == "input") return;
+
       switch(event.key) {
         case 'Enter':
           var buttons = ["전투", "탐사"];
@@ -85,8 +90,7 @@
           });
           break;
         case 'Backspace':
-          if(!doc.activeElement)
-            clickElement("돌아가기");
+          clickElement("돌아가기");
           break;
         case 'ArrowLeft':
           clickElement("◁");
@@ -113,7 +117,7 @@
           clickElement("장비");
           break;
         case '6':
-          clickElement("전투");
+          clickElement("전투", true);
           break;
         case '7':
           clickElement("협동");
